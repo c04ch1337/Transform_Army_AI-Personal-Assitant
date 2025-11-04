@@ -108,14 +108,24 @@ export const useMissionControl = () => {
         }
     });
     // Add orchestrator key based on provider
-    if (selectedProvider !== 'Google Gemini') {
+    if (selectedProvider === 'Google Gemini') {
+        keys.add('GEMINI_API_KEY');
+    } else {
         keys.add('OPENROUTER_API_KEY');
     }
     return Array.from(keys);
   }, [currentTeamManifest, allAgents, selectedProvider]);
 
   const isReadyForDeployment = useMemo(() => {
-    return requiredApiKeys.every(key => vaultValues[key] && vaultValues[key].trim() !== '');
+    // Check if all required keys are in vault, or if GEMINI_API_KEY is available from environment
+    return requiredApiKeys.every(key => {
+      if (key === 'GEMINI_API_KEY') {
+        // For Gemini, check both vault and environment variable
+        return (vaultValues[key] && vaultValues[key].trim() !== '') || 
+               (process.env.API_KEY && process.env.API_KEY.trim() !== '');
+      }
+      return vaultValues[key] && vaultValues[key].trim() !== '';
+    });
   }, [requiredApiKeys, vaultValues]);
 
   // Update document title based on mission status
