@@ -15,6 +15,13 @@ View your app in AI Studio: https://ai.studio/apps/drive/1d6PGEXnYoowlJnnp37aNe-
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set the required API keys in [.env.local](.env.local) for your chosen LLM provider:
+   - `OPENAI_API_KEY` for OpenAI
+   - `ANTHROPIC_API_KEY` for Anthropic
+   - `OPENROUTER_API_KEY` for OpenRouter
+   - `OLLAMA_API_KEY` for Ollama (optional, local - default: http://localhost:11434)
+   - `LMSTUDIO_API_KEY` for LMStudio (optional, local - default: http://localhost:1234)
+   - `LOCAL_LLM_ENDPOINT` for Local LLM (custom endpoint, default: http://localhost:8000/v1/chat/completions)
+   - `LOCAL_LLM_API_KEY` for Local LLM (optional, if your local server requires auth)
 3. Run the app:
    `npm run dev`

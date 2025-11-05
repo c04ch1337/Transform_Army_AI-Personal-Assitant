@@ -28,16 +28,20 @@ const MISSIONS: { [key: string]: string[] } = {
 };
 
 const PROVIDERS: { [key: string]: string[] } = {
-  "Google Gemini": ["gemini-2.5-pro", "gemini-2.5-flash"],
-  "OpenAI": ["GPT-4o", "GPT-3.5-Turbo"],
-  "Anthropic": ["Claude 3 Opus", "Claude 3 Sonnet"],
+  "OpenAI": ["gpt-4o", "gpt-4o-mini", "gpt-3.5-turbo"],
+  "Anthropic": ["claude-3-5-sonnet-20241022", "claude-3-opus-20240229", "claude-3-sonnet-20240229"],
   "OpenRouter": [
+    "openai/gpt-4o",
+    "openai/gpt-4o-mini",
+    "anthropic/claude-3.5-sonnet",
     "anthropic/claude-3-opus",
-    "google/gemini-pro",
-    "meta-llama/llama-3-8b-instruct",
+    "meta-llama/llama-3-70b-instruct",
     "mistralai/mistral-7b-instruct",
-    "openai/gpt-4o"
+    "google/gemini-pro"
   ],
+  "Ollama": ["llama3", "llama3.1", "mistral", "neural-chat", "codellama"],
+  "LMStudio": ["llama-3.1-8b-instruct-q4_k_m", "mistral-7b-instruct-v0.2", "phi-3-mini-4k-instruct"],
+  "Local LLM": ["custom-model"], // Custom endpoint for any local LLM server
 };
 
 const INDUSTRIES: string[] = [

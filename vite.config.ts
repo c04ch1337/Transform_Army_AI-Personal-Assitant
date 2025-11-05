@@ -11,8 +11,13 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+        'process.env.OPENAI_API_KEY': JSON.stringify(env.OPENAI_API_KEY),
+        'process.env.ANTHROPIC_API_KEY': JSON.stringify(env.ANTHROPIC_API_KEY),
+        'process.env.OPENROUTER_API_KEY': JSON.stringify(env.OPENROUTER_API_KEY),
+        'process.env.OLLAMA_API_KEY': JSON.stringify(env.OLLAMA_API_KEY),
+        'process.env.LMSTUDIO_API_KEY': JSON.stringify(env.LMSTUDIO_API_KEY),
+        'process.env.LOCAL_LLM_API_KEY': JSON.stringify(env.LOCAL_LLM_API_KEY),
+        'process.env.LOCAL_LLM_ENDPOINT': JSON.stringify(env.LOCAL_LLM_ENDPOINT),
       },
       resolve: {
         alias: {

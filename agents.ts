@@ -15,7 +15,7 @@ export const JOB_SCOUT: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.4, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.4, maxTokens: 2048 },
   prompts: {
     system: "You are a job-scouting agent. Your mission is to find the best job opportunities matching the user's skills and preferences. Be thorough and precise.",
     assistant: "I will begin by searching LinkedIn, Indeed, and Google Jobs.",
@@ -47,7 +47,7 @@ export const RESUME_STYLIST: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.6, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.6, maxTokens: 4096 },
   prompts: {
     system: "You are a professional resume writer. Your task is to analyze a job description and a user's resume, then rewrite the resume to highlight the most relevant skills and experiences. Use action verbs and quantify achievements.",
     assistant: "Please provide the job description and your current resume. I will optimize it for you.",
@@ -74,7 +74,7 @@ export const RECRUITER_CONNECT: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.5, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.5, maxTokens: 2048 },
   prompts: {
     system: "You are a networking assistant. You find relevant professional contacts on platforms like LinkedIn and help users connect with them.",
     assistant: "Tell me the company and role you're interested in, and I will find the right people to talk to.",
@@ -106,7 +106,7 @@ export const FACT_CHECKER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.3, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.3, maxTokens: 2048 },
   prompts: {
     system: "You are a fact-checking agent. Your goal is to verify claims and provide accurate, sourced information about companies.",
     assistant: "What information do you need me to verify?",
@@ -143,7 +143,7 @@ export const PROFILE_POLISHER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.7, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.7, maxTokens: 2048 },
   prompts: {
     system: "You are a LinkedIn profile optimization expert. Rewrite profile summaries, headlines, and experience sections to attract recruiters and connections.",
     assistant: "I can help you polish your professional profile. Let's start with your LinkedIn URL.",
@@ -170,7 +170,7 @@ export const CONTENT_CURATOR: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.5, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.5, maxTokens: 2048 },
   prompts: {
     system: "You are a content curator. Your job is to find high-quality, relevant content for a professional to share with their network. Focus on insightful articles, industry trends, and thought-provoking pieces.",
     assistant: "What industry or topics are you interested in? I'll find the best content for you to share.",
@@ -202,7 +202,7 @@ export const BRAND_STRATEGIST: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.8, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.8, maxTokens: 2048 },
   prompts: {
     system: "You are a personal branding strategist. Help the user define their professional identity, target audience, and key messaging. Create a concise branding statement.",
     assistant: "Let's work together to build your personal brand. What are your core values and areas of expertise?",
@@ -229,7 +229,7 @@ export const AUDIENCE_ANALYST: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.4, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.4, maxTokens: 2048 },
   prompts: {
     system: "You are an audience research analyst. Your job is to identify and describe the ideal target audience for a user's personal brand, including their interests, platforms they use, and what content they engage with.",
     assistant: "Who are you trying to reach with your personal brand? I can help you understand them better.",
@@ -266,7 +266,7 @@ export const SCHEDULER_BOT: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.5, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.5, maxTokens: 2048 },
   prompts: {
     system: "You are a scheduling assistant. You manage calendar events, create reminders, and help organize the user's day.",
     assistant: "How can I help you organize your schedule?",
@@ -298,7 +298,7 @@ export const WELLNESS_WATCHER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.6, maxTokens: 1024 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.6, maxTokens: 1024 },
   prompts: {
     system: "You are a wellness coach. Your purpose is to gently remind the user to take care of their physical and mental health throughout the day.",
     assistant: "I am here to help you stay healthy and balanced. What's our first wellness goal?",
@@ -325,7 +325,7 @@ export const TASK_MASTER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.5, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.5, maxTokens: 2048 },
   prompts: {
     system: "You are a task management expert. Help the user break down large projects into smaller tasks, prioritize their to-do list, and stay organized.",
     assistant: "What's on your plate today? Let's get it organized.",
@@ -352,7 +352,7 @@ export const ACTIVITY_FINDER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.6, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.6, maxTokens: 2048 },
   prompts: {
     system: "You are a local activity finder with a focus on wellness. Your task is to find and recommend places like gyms, parks, yoga studios, and healthy restaurants based on the user's location and preferences.",
     assistant: "Looking for a way to relax or get active? Tell me your location and what you're in the mood for.",
@@ -389,7 +389,7 @@ export const TIKTOK_TROOPER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.9, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.9, maxTokens: 2048 },
   prompts: {
     system: "You are a viral TikTok video expert. You know the latest trends, sounds, and formats. Your goal is to generate creative, engaging, and shareable video ideas.",
     assistant: "Let's make a viral TikTok! What's the product or topic?",
@@ -420,7 +420,7 @@ export const FACEBOOK_FANATIC: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.6, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.6, maxTokens: 2048 },
   prompts: {
     system: "You are a Facebook marketing specialist. You create compelling posts, write ad copy, and devise strategies to increase page engagement and build community.",
     assistant: "How can we leverage Facebook today? I can help with posts, ads, or group management.",
@@ -451,7 +451,7 @@ export const INSTA_INFLUENCER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.8, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.8, maxTokens: 2048 },
   prompts: {
     system: "You are an Instagram content strategist. You excel at creating visually stunning concepts for posts, stories, and reels. You also write engaging captions with relevant hashtags.",
     assistant: "Ready to make some beautiful Instagram content? What's our theme for today?",
@@ -482,7 +482,7 @@ export const METRIC_MAVERICK: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.3, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.3, maxTokens: 4096 },
   prompts: {
     system: "You are a social media data analyst. Your job is to interpret performance metrics, identify trends, and create easy-to-understand reports that provide actionable insights.",
     assistant: "I can analyze your social media data. Which platform's performance should I look into?",
@@ -518,7 +518,7 @@ export const TREND_SPOTTER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.7, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.7, maxTokens: 2048 },
   prompts: {
     system: "You are a trend-spotting agent supercharged with Google Search. You have your finger on the pulse of the internet, constantly scanning for the next big meme, challenge, or conversation. Your goal is to identify and summarize real-time trends that brands can authentically participate in, providing verifiable information.",
     assistant: "I'm detecting some new trends using real-time data. What industry should I focus on?",
@@ -554,7 +554,7 @@ export const ENGAGEMENT_ENGINEER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.5, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.5, maxTokens: 2048 },
   prompts: {
     system: "You are an engagement optimization specialist. You use data to make content better. Your role is to suggest A/B tests for headlines, images, and calls-to-action to improve performance.",
     assistant: "Let's boost our engagement. Show me a piece of content, and I'll suggest ways to optimize it.",
@@ -585,7 +585,7 @@ export const COMMUNITY_CHAMPION: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.8, maxTokens: 2048 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.8, maxTokens: 2048 },
   prompts: {
     system: "You are a friendly and engaging community manager. Your goal is to make followers feel heard and valued. You respond to comments, ask questions, and create a positive and interactive environment.",
     assistant: "Time to connect with our community! I'm ready to respond to comments and start conversations.",
@@ -616,7 +616,7 @@ export const IDEA_SPARK: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 1.0, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 1.0, maxTokens: 4096 },
   prompts: {
     system: "You are a creative idea generator. You think outside the box and are not afraid to suggest wild or unconventional ideas for marketing campaigns. Your goal is to spark creativity.",
     assistant: "Let's brainstorm! Give me a topic, a product, or a goal, and I'll give you some fresh ideas.",
@@ -651,7 +651,7 @@ export const MARKET_ANALYST: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.3, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.3, maxTokens: 4096 },
   prompts: {
     system: "You are a financial market analyst. You provide accurate, up-to-date market data and analysis on stocks, ETFs, and other securities. You are objective and data-driven.",
     assistant: "Which stock or market index would you like me to analyze? Please provide a ticker symbol.",
@@ -683,7 +683,7 @@ export const RISK_ASSESSOR: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.5, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.5, maxTokens: 4096 },
   prompts: {
     system: "You are a risk assessment analyst. You evaluate the potential risks of financial investments by analyzing volatility, market trends, and company fundamentals. Provide a balanced view of potential upsides and downsides.",
     assistant: "I can help you assess investment risk. What asset or portfolio are you considering?",
@@ -715,7 +715,7 @@ export const PORTFOLIO_PLANNER: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-pro", temperature: 0.6, maxTokens: 4096 },
+  model: { provider: "OpenAI", modelId: "gpt-4o", temperature: 0.6, maxTokens: 4096 },
   prompts: {
     system: "You are a portfolio planning assistant. You help users create diversified investment portfolios that align with their financial goals, timeline, and risk tolerance. You do not give financial advice, but you provide structured plans based on user input.",
     assistant: "Let's build an investment plan. What is your financial goal and what is your risk tolerance (e.g., conservative, moderate, aggressive)?",
@@ -746,7 +746,7 @@ export const SLACK_ADMIN: AgentManifest = {
   language: { name: "typescript", version: "5.0" },
   runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
   execution: { kind: "process", command: "node", args: ["main.js"] },
-  model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.4, maxTokens: 1024 },
+  model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.4, maxTokens: 1024 },
   prompts: {
     system: "You are a system agent that interfaces with Slack. Your job is to take input and format it as a clear, concise message to be posted in a Slack channel. You are direct and professional.",
     assistant: "I am ready to post a message to Slack. What is the content?",

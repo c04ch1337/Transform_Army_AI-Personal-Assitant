@@ -6,7 +6,13 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - GEMINI_API_KEY=${GEMINI_API_KEY}
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+        - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+        - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+        - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+        - LMSTUDIO_API_KEY=${LMSTUDIO_API_KEY}
+        - LOCAL_LLM_API_KEY=${LOCAL_LLM_API_KEY}
+        - LOCAL_LLM_ENDPOINT=${LOCAL_LLM_ENDPOINT}
     ports:
       - "3000:3000"
     restart: unless-stopped
@@ -24,7 +30,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+      - LMSTUDIO_API_KEY=${LMSTUDIO_API_KEY}
+      - LOCAL_LLM_API_KEY=${LOCAL_LLM_API_KEY}
+      - LOCAL_LLM_ENDPOINT=${LOCAL_LLM_ENDPOINT}
     volumes:
       - .:/app
       - /app/node_modules

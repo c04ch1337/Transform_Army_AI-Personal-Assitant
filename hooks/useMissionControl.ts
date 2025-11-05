@@ -12,7 +12,7 @@ import {
   ChatMessage,
 } from '../types';
 import { ALL_TEAM_MANIFESTS, allAgents as initialAllAgents, ORACLE_ORCHESTRATOR, MISSIONS } from '../constants';
-import { generateMissionPlan, generateAgentThoughtStream, executeGroundedAgentTask, getOrchestratorChatResponse } from '../services/geminiService';
+import { generateMissionPlan, generateAgentThoughtStream, executeGroundedAgentTask, getOrchestratorChatResponse } from '../services/llmService';
 import { useLocalStorage } from './useLocalStorage';
 import { playDeploySound, playAbortSound, playSuccessSound, playErrorSound, playClickSound } from '../utils/audio';
 
@@ -39,8 +39,8 @@ export const useMissionControl = () => {
   // Control Panel State
   const [selectedTeam, setSelectedTeam] = useLocalStorage<string>('selectedTeam', ALL_TEAM_MANIFESTS[0].name);
   const [selectedIndustry, setSelectedIndustry] = useLocalStorage<string>('selectedIndustry', 'Technology');
-  const [selectedProvider, setSelectedProvider] = useLocalStorage<string>('selectedProvider', 'Google Gemini');
-  const [selectedModel, setSelectedModel] = useLocalStorage<string>('selectedModel', 'gemini-2.5-pro');
+  const [selectedProvider, setSelectedProvider] = useLocalStorage<string>('selectedProvider', 'OpenAI');
+  const [selectedModel, setSelectedModel] = useLocalStorage<string>('selectedModel', 'gpt-4o');
   
   // Mission State
   const [missionObjective, setMissionObjective] = useState<string>('');
@@ -108,23 +108,29 @@ export const useMissionControl = () => {
         }
     });
     // Add orchestrator key based on provider
-    if (selectedProvider === 'Google Gemini') {
-        keys.add('GEMINI_API_KEY');
-    } else {
-        keys.add('OPENROUTER_API_KEY');
+    const providerKeyMap: Record<string, string> = {
+      'OpenAI': 'OPENAI_API_KEY',
+      'Anthropic': 'ANTHROPIC_API_KEY',
+      'OpenRouter': 'OPENROUTER_API_KEY',
+      'Ollama': '', // No API key needed for local Ollama
+      'LMStudio': '', // No API key needed for local LMStudio
+      'Local LLM': '', // Optional - can use LOCAL_LLM_API_KEY if needed
+    };
+    const providerKey = providerKeyMap[selectedProvider];
+    if (providerKey) {
+      keys.add(providerKey);
     }
     return Array.from(keys);
   }, [currentTeamManifest, allAgents, selectedProvider]);
 
   const isReadyForDeployment = useMemo(() => {
-    // Check if all required keys are in vault, or if GEMINI_API_KEY is available from environment
+    // Check if all required keys are in vault or environment
     return requiredApiKeys.every(key => {
-      if (key === 'GEMINI_API_KEY') {
-        // For Gemini, check both vault and environment variable
-        return (vaultValues[key] && vaultValues[key].trim() !== '') || 
-               (process.env.API_KEY && process.env.API_KEY.trim() !== '');
-      }
-      return vaultValues[key] && vaultValues[key].trim() !== '';
+      if (!key) return true; // Empty key means not required (e.g., Ollama, LMStudio)
+      // Check vault first, then environment
+      const vaultValue = vaultValues[key] && vaultValues[key].trim() !== '';
+      const envValue = typeof process !== 'undefined' && process.env[key] && process.env[key].trim() !== '';
+      return vaultValue || envValue;
     });
   }, [requiredApiKeys, vaultValues]);
 
@@ -529,7 +535,7 @@ export const useMissionControl = () => {
       language: { name: "typescript", version: "5.0" },
       runtime: { engine: "nodejs", framework: "none", entrypoint: "main.js" },
       execution: { kind: "process", command: "node", args: ["main.js"] },
-      model: { provider: "Google Gemini", modelId: "gemini-2.5-flash", temperature: 0.7, maxTokens: 2048 },
+      model: { provider: "OpenAI", modelId: "gpt-4o-mini", temperature: 0.7, maxTokens: 2048 },
       prompts: {
         system: `You are a custom agent named ${name}. Your purpose is: ${description}`,
         assistant: "I am ready for my assignment.",
